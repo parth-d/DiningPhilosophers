@@ -1,29 +1,29 @@
 package com.parth.DiningPhilosophers;
 
 public class DiningTest {
+    // Set the number of philosophers here
+    static int number = 3;
 
     public static void main(String[] args) {
-
-        Philosopher[] philosophers = new Philosopher[5];
-        Object[] forks = new Object[philosophers.length];
-
-        for (int i = 0; i < forks.length; i++) {
-            forks[i] = new Object();
+        // Creation of objects
+        Philosopher[] philosophers = new Philosopher[number];
+        Object[] chopsticks = new Object[philosophers.length];
+        for (int i = 0; i < chopsticks.length; i++) {
+            chopsticks[i] = new Object();
         }
 
+        // Assignment of chopsticks to philosophers
         for (int i = 0; i < philosophers.length; i++) {
-            Object leftFork = forks[i];
-            Object rightFork = forks[(i + 1) % forks.length];
+            Object Chopstick1 = chopsticks[i];
+            Object Chopstick2 = chopsticks[(i + 1) % chopsticks.length];
 
-            if (i == philosophers.length - 1) {
+            // If the current philosopher is the last one, then make them pick up chopstick2 (right) first.
+            if (i == philosophers.length - 1) philosophers[i] = new Philosopher(Chopstick2, Chopstick1);
+            // For all others, make them pick up chopstick1 (left) first
+            else philosophers[i] = new Philosopher(Chopstick1, Chopstick2);
 
-                // The last philosopher picks up the right fork first
-                philosophers[i] = new Philosopher(rightFork, leftFork);
-            } else {
-                philosophers[i] = new Philosopher(leftFork, rightFork);
-            }
-            Thread t
-                    = new Thread(philosophers[i], "Philosopher " + (i + 1));
+            // Start executing threads, representing philosophers.
+            Thread t = new Thread(philosophers[i], "Philosopher " + (i + 1));
             t.start();
         }
     }
