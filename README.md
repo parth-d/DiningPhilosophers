@@ -1,7 +1,7 @@
 #Homework 1: Problem 1 (Exercise 1.1)
 ## Dining Philosophers
 ### Approach:
-The first step was to create a runnable Philosopher. This philosopher holds two objects (chopsticks). When the philosopher thinks (constant time; can be modified in the code), they do not hold any chopsticks. When they feel hungry, they pick up two chopsticks close to them one by one. This is implemented in this code by synchronising the access to the shared chopstick objects. 
+The first step was to create a runnable Philosopher. This philosopher holds two objects (chopsticks). When the philosopher thinks (constant time; can be modified in the code), they do not hold any chopsticks. When they feel hungry, they pick up two chopsticks close to them one by one. This is implemented in this code by synchronizing the access to the shared chopstick objects. 
 ### Problems and workarounds:
 #### 1. Mutual Exclusion:
 It needs to be made sure that two philosophers cannot hold a chopstick object at the same time. This is made sure by using synchronizing in Java.
